@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>My YouTube Links</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+        h1 {
+            text-align: center;
+        }
+        .search-box {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        input {
+            padding: 10px;
+            width: 80%;
+            max-width: 400px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+        .links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .link-card {
+            background: #fff;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        .link-card a {
+            text-decoration: none;
+            color: #007acc;
+            font-weight: bold;
+        }
+
+        /* Dark mode styles */
+        .dark {
+            background: #1e1e1e;
+            color: #ddd;
+        }
+        .dark .link-card {
+            background: #2e2e2e;
+        }
+        .dark .link-card a {
+            color: #4db8ff;
+        }
+
+        .toggle-dark {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button class="toggle-dark" onclick="toggleDarkMode()">🌓</button>
+    <h1>My YouTube Links</h1>
+    <div class="search-box">
+        <input type="text" id="search" placeholder="Search...">
+    </div>
+    <div class="links" id="links"></div>
+
+    <script>
+        const ytLinks = [
+            { title: "My Favorite Song", url: "https://youtu.be/abc123" },
+            { title: "Cool Tech Video", url: "https://youtu.be/def456" },
+            { title: "Funny Cats Compilation", url: "https://youtu.be/ghi789" },
+            { title: "Learning JavaScript", url: "https://youtu.be/jkl012" },
+            { title: "Epic Nature Video", url: "https://youtu.be/mno345" }
+        ];
+
+        const linksDiv = document.getElementById("links");
+        const searchBox = document.getElementById("search");
+
+        function displayLinks(filter="") {
+            linksDiv.innerHTML = "";
+            ytLinks.filter(link => link.title.toLowerCase().includes(filter.toLowerCase()))
+                   .forEach(link => {
+                       const card = document.createElement("div");
+                       card.className = "link-card";
+                       card.innerHTML = `<a href="${link.url}" target="_blank">${link.title}</a>`;
+                       linksDiv.appendChild(card);
+                   });
+        }
+
+        searchBox.addEventListener("input", e => {
+            displayLinks(e.target.value);
+        });
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark');
+        }
+
+        displayLinks();
+    </script>
+</body>
+</html>
