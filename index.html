@@ -1,151 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Sharda International Academy</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: url('https://images.unsplash.com/photo-1542281286-9e0a16bb7366?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
-            background-size: cover;
-            margin: 0;
-            padding: 0;
-            position: relative;
-            color: #fff;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: -1;
-        }
-
-        header {
-            background: rgba(0, 0, 0, 0.5);
-            color: #fff;
-            padding: 30px 20px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.6);
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 3rem;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px #00ffe7;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        .search-box {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 30px;
-        }
-
-        .search-box input {
-            padding: 12px;
-            width: 80%;
-            max-width: 400px;
-            border: 2px solid #fff;
-            border-radius: 30px;
-            font-size: 16px;
-            outline: none;
-            transition: 0.3s;
-            background: rgba(255,255,255,0.2);
-            color: #fff;
-            backdrop-filter: blur(5px);
-        }
-
-        .search-box input::placeholder {
-            color: #eee;
-        }
-
-        .search-box input:focus {
-            border-color: #00ffe7;
-            background: rgba(255,255,255,0.3);
-            box-shadow: 0 0 10px #00ffe7;
-        }
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-            text-align: center;
-            color: #fff;
-            font-size: 1.3rem;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 0 20px #00ffe7, 0 0 40px #00ffe7;
-            background: rgba(255,255,255,0.25);
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sharda International Academy</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: url('https://images.unsplash.com/photo-1542281286-9e0a16bb7366?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+        background-size: cover;
+        margin: 0;
+        padding: 0;
+        color: #fff;
+    }
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: -1;
+    }
+    header {
+        background: rgba(0, 0, 0, 0.5);
+        padding: 30px 20px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+    }
+    header h1 {
+        margin: 0;
+        font-size: 2.8rem;
+        text-shadow: 0 0 10px #00ffe7;
+    }
+    nav {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: 20px;
+    }
+    nav button {
+        background: rgba(255,255,255,0.2);
+        border: 2px solid #00ffe7;
+        border-radius: 25px;
+        padding: 12px 25px;
+        margin: 10px;
+        color: #fff;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: 0.3s;
+        backdrop-filter: blur(5px);
+    }
+    nav button:hover {
+        background: rgba(255,255,255,0.3);
+        box-shadow: 0 0 15px #00ffe7;
+    }
+    .section {
+        display: none;
+        max-width: 900px;
+        margin: 30px auto;
+        padding: 0 20px;
+    }
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+    }
+    .card {
+        background: rgba(255,255,255,0.15);
+        backdrop-filter: blur(8px);
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+        transition: 0.3s;
+        text-align: center;
+        cursor: pointer;
+    }
+    .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 0 20px #00ffe7;
+        background: rgba(255,255,255,0.25);
+    }
+</style>
 </head>
 <body>
-    <header>
-        <h1>Sharda International Academy</h1>
-    </header>
-    <div class="container">
-        <div class="search-box">
-            <input type="text" id="search" placeholder="Search chapters...">
+
+<header>
+    <h1>Sharda International Academy</h1>
+</header>
+
+<nav id="mainMenu">
+    <button onclick="showSection('preparation')">Preparation</button>
+    <button onclick="showSection('notes')">Notes</button>
+</nav>
+
+<div id="preparation" class="section">
+    <nav>
+        <button onclick="showSection('mainMenu')">⬅ Back to Menu</button>
+    </nav>
+    <div class="cards">
+        <div class="card" onclick="showSubject('math')">Math</div>
+        <div class="card" onclick="showSubject('science')">Science</div>
+        <div class="card" onclick="showSubject('hindi')">Hindi</div>
+        <div class="card" onclick="showSubject('english')">English</div>
+        <div class="card" onclick="showSubject('sanskrit')">Sanskrit</div>
+        <div class="card" onclick="showSubject('sst')">SST</div>
+        <div class="card" onclick="showSubject('computer')">Computer</div>
+        <div class="card" onclick="showSubject('gk')">GK</div>
+    </div>
+</div>
+
+<div id="notes" class="section">
+    <nav>
+        <button onclick="showSection('mainMenu')">⬅ Back to Menu</button>
+    </nav>
+    <div class="cards">
+        <div class="card" onclick="window.open('https://github.com/YOUR_GITHUB_REPO')">
+            Class 10 Math Notes
         </div>
-        <div class="cards" id="links">
-            <!-- JavaScript will populate this -->
+        <div class="card" onclick="window.open('https://github.com/YOUR_GITHUB_REPO')">
+            Class 10 Science Notes
         </div>
     </div>
+</div>
 
-    <script>
-        const ytLinks = [
-            { title: "Acid, base and salts", url: "https://youtu.be/QQ9tgPvFg4c?si=yqBrlVRL1kMhy99-" },
-            { title: "Trigonometry", url: "https://www.youtube.com/live/sRZbjNtOflY?si=LXWT-N1tH7Tkw78Q" },
-            { title: "Basic Chemistry", url: "https://youtu.be/0lz53G7HLdk?si=EeBXMEM_r30AutoH" }
-        ];
+<!-- Subject detail pages -->
+<div id="math" class="section">
+    <nav><button onclick="showSection('preparation')">⬅ Back</button></nav>
+    <div class="cards">
+        <div class="card" onclick="window.open('https://www.youtube.com/live/sRZbjNtOflY?si=LXWT-N1tH7Tkw78Q')">
+            Trigonometry
+        </div>
+    </div>
+</div>
 
-        const linksDiv = document.getElementById("links");
-        const searchBox = document.getElementById("search");
+<div id="science" class="section">
+    <nav><button onclick="showSection('preparation')">⬅ Back</button></nav>
+    <div class="cards">
+        <div class="card" onclick="window.open('https://youtu.be/QQ9tgPvFg4c?si=yqBrlVRL1kMhy99-')">
+            Acids, Bases & Salts
+        </div>
+        <div class="card" onclick="window.open('https://youtu.be/0lz53G7HLdk?si=EeBXMEM_r30AutoH')">
+            Basic Chemistry
+        </div>
+    </div>
+</div>
 
-        function displayLinks(filter = "") {
-            linksDiv.innerHTML = "";
-            ytLinks.filter(link => link.title.toLowerCase().includes(filter.toLowerCase()))
-                   .forEach(link => {
-                       const card = document.createElement("div");
-                       card.className = "card";
-                       card.textContent = link.title;
+<div id="hindi" class="section">
+    <nav><button onclick="showSection('preparation')">⬅ Back</button></nav>
+    <div class="cards"><div class="card">Coming Soon</div></div>
+</div>
 
-                       card.addEventListener("click", () => {
-                           window.open(link.url, "_blank");
-                       });
+<div id="english" class="section">
+    <nav><button onclick="showSection('preparation')">⬅ Back</button></nav>
+    <div class="cards"><div class="card">Coming Soon</div></div>
+</div>
 
-                       card.title = "Click to open video";
-                       linksDiv.appendChild(card);
-                   });
+<div id="sanskrit" class="section">
+    <nav><button onclick="showSection('preparation')">⬅ Back</button></nav>
+    <div class="cards"><div class="card">Coming Soon</div></div>
+</div>
+
+<div id="sst" class="section">
+    <nav><button onclick="showSection('preparation')">⬅ Back</button></nav>
+    <div class="cards"><div class="card">Coming Soon</div></div>
+</div>
+
+<div id="computer" class="section">
+    <nav><button onclick="showSection('preparation')">⬅ Back</button></nav>
+    <div class="cards"><div class="card">Coming Soon</div></div>
+</div>
+
+<div id="gk" class="section">
+    <nav><button onclick="showSection('preparation')">⬅ Back</button></nav>
+    <div class="cards"><div class="card">Coming Soon</div></div>
+</div>
+
+<script>
+    function showSection(id) {
+        document.querySelectorAll('.section, nav#mainMenu').forEach(el => el.style.display = 'none');
+        if (id === 'mainMenu') {
+            document.getElementById('mainMenu').style.display = 'flex';
+        } else {
+            document.getElementById(id).style.display = 'block';
         }
+    }
+    function showSubject(id) {
+        showSection(id);
+    }
+    showSection('mainMenu');
+</script>
 
-        searchBox.addEventListener("input", e => {
-            displayLinks(e.target.value);
-        });
-
-        displayLinks();
-    </script>
 </body>
 </html>
