@@ -7,7 +7,7 @@
 <style>
     body {
         font-family: Arial, sans-serif;
-        background: #fff;
+        background: #f0f0f0;
         color: #333;
         margin: 0;
         padding: 0;
@@ -21,6 +21,7 @@
         height: 120px;
         object-fit: cover;
         border-radius: 50%;
+        border: 3px solid #007BFF;
         margin-bottom: 15px;
     }
     header h1 {
@@ -36,15 +37,16 @@
     }
     nav button {
         padding: 10px 25px;
-        border: 2px solid #333;
+        border: 2px solid #007BFF;
         border-radius: 25px;
         background: none;
+        color: #007BFF;
         cursor: pointer;
         font-size: 1rem;
         transition: 0.3s;
     }
     nav button:hover {
-        background: #333;
+        background: #007BFF;
         color: #fff;
     }
     .section {
@@ -61,15 +63,15 @@
         margin-top: 20px;
     }
     .card {
-        border: 2px solid #333;
+        background: #333;
+        color: #fff;
         border-radius: 15px;
         padding: 20px;
         cursor: pointer;
         transition: 0.3s;
     }
     .card:hover {
-        background: #333;
-        color: #fff;
+        background: #007BFF;
     }
     .dot {
         height: 12px;
@@ -142,7 +144,7 @@
     </div>
 </div>
 
-<!-- OTHER SUBJECTS (blank for now) -->
+<!-- OTHER SUBJECTS -->
 <div id="science" class="section"><nav><button onclick="showSection('preparation')">⬅ Back</button></nav><h2>Science</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
 <div id="hindi" class="section"><nav><button onclick="showSection('preparation')">⬅ Back</button></nav><h2>Hindi</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
 <div id="english" class="section"><nav><button onclick="showSection('preparation')">⬅ Back</button></nav><h2>English</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
