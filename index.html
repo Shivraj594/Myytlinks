@@ -80,6 +80,14 @@
         box-shadow: 0 0 20px #00ffe7;
         background: rgba(255,255,255,0.25);
     }
+    .dot {
+        height: 12px;
+        width: 12px;
+        background-color: red;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 8px;
+    }
 </style>
 </head>
 <body>
@@ -94,9 +102,7 @@
 </nav>
 
 <div id="preparation" class="section">
-    <nav>
-        <button onclick="showSection('mainMenu')">⬅ Back to Menu</button>
-    </nav>
+    <nav><button onclick="showSection('mainMenu')">⬅ Back to Menu</button></nav>
     <div class="cards">
         <div class="card" onclick="showSubject('math')">Math</div>
         <div class="card" onclick="showSubject('science')">Science</div>
@@ -109,10 +115,22 @@
     </div>
 </div>
 
+<div id="math" class="section">
+    <nav><button onclick="showSection('preparation')">⬅ Back</button></nav>
+    <div class="cards">
+        <div class="card" onclick="acknowledge('ex2_2', 'https://youtu.be/WmDDMaIv8xo?si=CXkvF8WadjdBRWJD')">
+            <span id="dot_ex2_2" class="dot"></span>
+            Exercise 2.2
+        </div>
+        <div class="card" onclick="acknowledge('ex1_2', 'https://youtu.be/XrXUID3gEPg?si=XQEQi6PVqwwnPTOj')">
+            <span id="dot_ex1_2" class="dot"></span>
+            Exercise 1.2
+        </div>
+    </div>
+</div>
+
 <div id="notes" class="section">
-    <nav>
-        <button onclick="showSection('mainMenu')">⬅ Back to Menu</button>
-    </nav>
+    <nav><button onclick="showSection('mainMenu')">⬅ Back to Menu</button></nav>
     <div class="cards">
         <div class="card" onclick="window.open('https://github.com/YOUR_GITHUB_REPO')">
             Class 10 Math Notes
@@ -123,71 +141,47 @@
     </div>
 </div>
 
-<!-- Subject detail pages -->
-<div id="math" class="section">
-    <nav><button onclick="showSection('preparation')">⬅ Back</button></nav>
-    <div class="cards">
-        <div class="card" onclick="window.open('https://www.youtube.com/live/sRZbjNtOflY?si=LXWT-N1tH7Tkw78Q')">
-            Trigonometry
-        </div>
-    </div>
-</div>
-
-<div id="science" class="section">
-    <nav><button onclick="showSection('preparation')">⬅ Back</button></nav>
-    <div class="cards">
-        <div class="card" onclick="window.open('https://youtu.be/QQ9tgPvFg4c?si=yqBrlVRL1kMhy99-')">
-            Acids, Bases & Salts
-        </div>
-        <div class="card" onclick="window.open('https://youtu.be/0lz53G7HLdk?si=EeBXMEM_r30AutoH')">
-            Basic Chemistry
-        </div>
-    </div>
-</div>
-
-<div id="hindi" class="section">
-    <nav><button onclick="showSection('preparation')">⬅ Back</button></nav>
-    <div class="cards"><div class="card">Coming Soon</div></div>
-</div>
-
-<div id="english" class="section">
-    <nav><button onclick="showSection('preparation')">⬅ Back</button></nav>
-    <div class="cards"><div class="card">Coming Soon</div></div>
-</div>
-
-<div id="sanskrit" class="section">
-    <nav><button onclick="showSection('preparation')">⬅ Back</button></nav>
-    <div class="cards"><div class="card">Coming Soon</div></div>
-</div>
-
-<div id="sst" class="section">
-    <nav><button onclick="showSection('preparation')">⬅ Back</button></nav>
-    <div class="cards"><div class="card">Coming Soon</div></div>
-</div>
-
-<div id="computer" class="section">
-    <nav><button onclick="showSection('preparation')">⬅ Back</button></nav>
-    <div class="cards"><div class="card">Coming Soon</div></div>
-</div>
-
-<div id="gk" class="section">
-    <nav><button onclick="showSection('preparation')">⬅ Back</button></nav>
-    <div class="cards"><div class="card">Coming Soon</div></div>
-</div>
+<!-- Other subjects placeholder -->
+<div id="science" class="section"><nav><button onclick="showSection('preparation')">⬅ Back</button></nav><div class="cards"><div class="card">Coming Soon</div></div></div>
+<div id="hindi" class="section"><nav><button onclick="showSection('preparation')">⬅ Back</button></nav><div class="cards"><div class="card">Coming Soon</div></div></div>
+<div id="english" class="section"><nav><button onclick="showSection('preparation')">⬅ Back</button></nav><div class="cards"><div class="card">Coming Soon</div></div></div>
+<div id="sanskrit" class="section"><nav><button onclick="showSection('preparation')">⬅ Back</button></nav><div class="cards"><div class="card">Coming Soon</div></div></div>
+<div id="sst" class="section"><nav><button onclick="showSection('preparation')">⬅ Back</button></nav><div class="cards"><div class="card">Coming Soon</div></div></div>
+<div id="computer" class="section"><nav><button onclick="showSection('preparation')">⬅ Back</button></nav><div class="cards"><div class="card">Coming Soon</div></div></div>
+<div id="gk" class="section"><nav><button onclick="showSection('preparation')">⬅ Back</button></nav><div class="cards"><div class="card">Coming Soon</div></div></div>
 
 <script>
-    function showSection(id) {
-        document.querySelectorAll('.section, nav#mainMenu').forEach(el => el.style.display = 'none');
-        if (id === 'mainMenu') {
-            document.getElementById('mainMenu').style.display = 'flex';
+let updateId = 'v1'; // ======= CHANGE this on each GitHub update =======
+
+function showSection(id) {
+    document.querySelectorAll('.section, nav#mainMenu').forEach(el => el.style.display = 'none');
+    if (id === 'mainMenu') {
+        document.getElementById('mainMenu').style.display = 'flex';
+    } else {
+        document.getElementById(id).style.display = 'block';
+    }
+}
+function showSubject(id) {
+    showSection(id);
+}
+function acknowledge(key, link) {
+    let userSeenKey = updateId + '_' + key;
+    localStorage.setItem(userSeenKey, true);
+    document.getElementById('dot_' + key).style.display = 'none';
+    window.open(link);
+}
+function checkUpdates() {
+    ['ex2_2', 'ex1_2'].forEach(key => {
+        let userSeenKey = updateId + '_' + key;
+        if (!localStorage.getItem(userSeenKey)) {
+            document.getElementById('dot_' + key).style.display = 'inline-block';
         } else {
-            document.getElementById(id).style.display = 'block';
+            document.getElementById('dot_' + key).style.display = 'none';
         }
-    }
-    function showSubject(id) {
-        showSection(id);
-    }
-    showSection('mainMenu');
+    });
+}
+checkUpdates();
+showSection('mainMenu');
 </script>
 
 </body>
