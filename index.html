@@ -94,9 +94,10 @@
 <nav id="mainMenu">
     <button onclick="showSection('preparation')">Preparation</button>
     <button onclick="showSection('notes')">Notes</button>
+    <button onclick="showSection('questions')">Questions</button>
 </nav>
 
-<!-- PREPARATION TAB -->
+<!-- PREPARATION -->
 <div id="preparation" class="section">
     <nav><button onclick="showSection('mainMenu')">⬅ Back to Menu</button></nav>
     <h2>Subjects</h2>
@@ -112,7 +113,7 @@
     </div>
 </div>
 
-<!-- NOTES TAB -->
+<!-- NOTES -->
 <div id="notes" class="section">
     <nav><button onclick="showSection('mainMenu')">⬅ Back to Menu</button></nav>
     <h2>Notes</h2>
@@ -128,7 +129,23 @@
     </div>
 </div>
 
-<!-- SUBJECT EXAMPLES (MATH with red dot system) -->
+<!-- QUESTIONS -->
+<div id="questions" class="section">
+    <nav><button onclick="showSection('mainMenu')">⬅ Back to Menu</button></nav>
+    <h2>Questions</h2>
+    <div class="cards">
+        <div class="card" onclick="showSubject('q_math')">Math</div>
+        <div class="card" onclick="showSubject('q_science')">Science</div>
+        <div class="card" onclick="showSubject('q_hindi')">Hindi</div>
+        <div class="card" onclick="showSubject('q_english')">English</div>
+        <div class="card" onclick="showSubject('q_sanskrit')">Sanskrit</div>
+        <div class="card" onclick="showSubject('q_sst')">SST</div>
+        <div class="card" onclick="showSubject('q_computer')">Computer</div>
+        <div class="card" onclick="showSubject('q_gk')">GK</div>
+    </div>
+</div>
+
+<!-- MATH VIDEOS -->
 <div id="math" class="section">
     <nav><button onclick="showSection('preparation')">⬅ Back to Subjects</button></nav>
     <h2>Math Videos</h2>
@@ -144,7 +161,18 @@
     </div>
 </div>
 
-<!-- OTHER SUBJECTS -->
+<!-- QUESTIONS -> SCIENCE PDF -->
+<div id="q_science" class="section">
+    <nav><button onclick="showSection('questions')">⬅ Back to Subjects</button></nav>
+    <h2>Science Questions</h2>
+    <div class="cards">
+        <div class="card" onclick="window.open('https://drive.google.com/file/d/1IBuZf2MHKOf6FePM-aElLRSXrzMHhbA2/view?usp=drivesdk')">
+            📝 Jyoti Intext Questions
+        </div>
+    </div>
+</div>
+
+<!-- Other subjects coming soon -->
 <div id="science" class="section"><nav><button onclick="showSection('preparation')">⬅ Back</button></nav><h2>Science</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
 <div id="hindi" class="section"><nav><button onclick="showSection('preparation')">⬅ Back</button></nav><h2>Hindi</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
 <div id="english" class="section"><nav><button onclick="showSection('preparation')">⬅ Back</button></nav><h2>English</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
@@ -152,21 +180,22 @@
 <div id="sst" class="section"><nav><button onclick="showSection('preparation')">⬅ Back</button></nav><h2>SST</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
 <div id="computer" class="section"><nav><button onclick="showSection('preparation')">⬅ Back</button></nav><h2>Computer</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
 <div id="gk" class="section"><nav><button onclick="showSection('preparation')">⬅ Back</button></nav><h2>GK</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
+<div id="q_math" class="section"><nav><button onclick="showSection('questions')">⬅ Back</button></nav><h2>Math Questions</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
+<div id="q_hindi" class="section"><nav><button onclick="showSection('questions')">⬅ Back</button></nav><h2>Hindi Questions</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
+<div id="q_english" class="section"><nav><button onclick="showSection('questions')">⬅ Back</button></nav><h2>English Questions</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
+<div id="q_sanskrit" class="section"><nav><button onclick="showSection('questions')">⬅ Back</button></nav><h2>Sanskrit Questions</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
+<div id="q_sst" class="section"><nav><button onclick="showSection('questions')">⬅ Back</button></nav><h2>SST Questions</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
+<div id="q_computer" class="section"><nav><button onclick="showSection('questions')">⬅ Back</button></nav><h2>Computer Questions</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
+<div id="q_gk" class="section"><nav><button onclick="showSection('questions')">⬅ Back</button></nav><h2>GK Questions</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
 
 <script>
-let updateId = 'v1'; // CHANGE this on every new GitHub update
-
+let updateId = 'v2'; // force new update dots
 function showSection(id) {
     document.querySelectorAll('.section, nav#mainMenu').forEach(el => el.style.display = 'none');
-    if (id === 'mainMenu') {
-        document.getElementById('mainMenu').style.display = 'flex';
-    } else {
-        document.getElementById(id).style.display = 'block';
-    }
+    if (id === 'mainMenu') document.getElementById('mainMenu').style.display = 'flex';
+    else document.getElementById(id).style.display = 'block';
 }
-function showSubject(id) {
-    showSection(id);
-}
+function showSubject(id) { showSection(id); }
 function acknowledge(key, link) {
     let userSeenKey = updateId + '_' + key;
     localStorage.setItem(userSeenKey, true);
@@ -176,11 +205,7 @@ function acknowledge(key, link) {
 function checkUpdates() {
     ['ex2_2', 'ex1_2'].forEach(key => {
         let userSeenKey = updateId + '_' + key;
-        if (!localStorage.getItem(userSeenKey)) {
-            document.getElementById('dot_' + key).style.display = 'inline-block';
-        } else {
-            document.getElementById('dot_' + key).style.display = 'none';
-        }
+        document.getElementById('dot_' + key).style.display = localStorage.getItem(userSeenKey) ? 'none' : 'inline-block';
     });
 }
 checkUpdates();
