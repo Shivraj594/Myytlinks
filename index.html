@@ -95,6 +95,7 @@
     <button onclick="showSection('preparation')">Preparation</button>
     <button onclick="showSection('notes')">Notes</button>
     <button onclick="showSection('questions')">Questions</button>
+    <button onclick="showSection('misc')">Misc.</button>
 </nav>
 
 <!-- PREPARATION -->
@@ -184,21 +185,16 @@
     </div>
 </div>
 
-<!-- Placeholder Subjects -->
-<div id="science" class="section"><nav><button onclick="showSection('preparation')">⬅ Back</button></nav><h2>Science</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
-<div id="hindi" class="section"><nav><button onclick="showSection('preparation')">⬅ Back</button></nav><h2>Hindi</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
-<div id="english" class="section"><nav><button onclick="showSection('preparation')">⬅ Back</button></nav><h2>English</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
-<div id="sanskrit" class="section"><nav><button onclick="showSection('preparation')">⬅ Back</button></nav><h2>Sanskrit</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
-<div id="sst" class="section"><nav><button onclick="showSection('preparation')">⬅ Back</button></nav><h2>SST</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
-<div id="computer" class="section"><nav><button onclick="showSection('preparation')">⬅ Back</button></nav><h2>Computer</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
-<div id="gk" class="section"><nav><button onclick="showSection('preparation')">⬅ Back</button></nav><h2>GK</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
-<div id="q_math" class="section"><nav><button onclick="showSection('questions')">⬅ Back</button></nav><h2>Math Questions</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
-<div id="q_hindi" class="section"><nav><button onclick="showSection('questions')">⬅ Back</button></nav><h2>Hindi Questions</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
-<div id="q_english" class="section"><nav><button onclick="showSection('questions')">⬅ Back</button></nav><h2>English Questions</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
-<div id="q_sanskrit" class="section"><nav><button onclick="showSection('questions')">⬅ Back</button></nav><h2>Sanskrit Questions</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
-<div id="q_sst" class="section"><nav><button onclick="showSection('questions')">⬅ Back</button></nav><h2>SST Questions</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
-<div id="q_computer" class="section"><nav><button onclick="showSection('questions')">⬅ Back</button></nav><h2>Computer Questions</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
-<div id="q_gk" class="section"><nav><button onclick="showSection('questions')">⬅ Back</button></nav><h2>GK Questions</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
+<!-- MISC SECTION -->
+<div id="misc" class="section">
+    <nav><button onclick="showSection('mainMenu')">⬅ Back to Menu</button></nav>
+    <h2>Miscellaneous</h2>
+    <div class="cards">
+        <div class="card" onclick="window.open('https://drive.google.com/drive/folders/1IkMiJcZ73cLshw7A_yiRzh1-hBz5XuA6')">
+            Mayank
+        </div>
+    </div>
+</div>
 
 <script>
 let updateId = 'v2';
