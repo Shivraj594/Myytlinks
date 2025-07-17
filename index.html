@@ -113,6 +113,34 @@
     </div>
 </div>
 
+<!-- MATH VIDEOS -->
+<div id="math" class="section">
+    <nav><button onclick="showSection('preparation')">⬅ Back to Subjects</button></nav>
+    <h2>Math Videos</h2>
+    <div class="cards">
+        <div class="card" onclick="acknowledge('ex2_2', 'https://youtu.be/WmDDMaIv8xo?si=CXkvF8WadjdBRWJD')">
+            <span id="dot_ex2_2" class="dot"></span>
+            Exercise 2.2
+        </div>
+        <div class="card" onclick="acknowledge('ex1_2', 'https://youtu.be/XrXUID3gEPg?si=XQEQi6PVqwwnPTOj')">
+            <span id="dot_ex1_2" class="dot"></span>
+            Exercise 1.2
+        </div>
+        <div class="card" onclick="acknowledge('ex3_1', 'https://youtube.com/playlist?list=PLdRKETikiqn02e6NzvVX2eCPzL_aL7gjo&si=VDNaZBp82ry-nqg5')">
+            <span id="dot_ex3_1" class="dot"></span>
+            Exercise 3.1
+        </div>
+        <div class="card" onclick="acknowledge('ex3_2', 'https://youtube.com/playlist?list=PLdRKETikiqn2_SlHHZjesRP59wMAsQrkc&si=v4idX8MqJmOgHu1w')">
+            <span id="dot_ex3_2" class="dot"></span>
+            Exercise 3.2
+        </div>
+        <div class="card" onclick="acknowledge('ex3_3', 'https://youtube.com/playlist?list=PLdRKETikiqn0Tzn6VxgIQlOLsD_CHhuGt&si=p1bli1p6M_jzdAL4')">
+            <span id="dot_ex3_3" class="dot"></span>
+            Exercise 3.3
+        </div>
+    </div>
+</div>
+
 <!-- NOTES -->
 <div id="notes" class="section">
     <nav><button onclick="showSection('mainMenu')">⬅ Back to Menu</button></nav>
@@ -145,23 +173,7 @@
     </div>
 </div>
 
-<!-- MATH VIDEOS -->
-<div id="math" class="section">
-    <nav><button onclick="showSection('preparation')">⬅ Back to Subjects</button></nav>
-    <h2>Math Videos</h2>
-    <div class="cards">
-        <div class="card" onclick="acknowledge('ex2_2', 'https://youtu.be/WmDDMaIv8xo?si=CXkvF8WadjdBRWJD')">
-            <span id="dot_ex2_2" class="dot"></span>
-            Exercise 2.2
-        </div>
-        <div class="card" onclick="acknowledge('ex1_2', 'https://youtu.be/XrXUID3gEPg?si=XQEQi6PVqwwnPTOj')">
-            <span id="dot_ex1_2" class="dot"></span>
-            Exercise 1.2
-        </div>
-    </div>
-</div>
-
-<!-- QUESTIONS -> SCIENCE PDF -->
+<!-- SCIENCE QUESTIONS -->
 <div id="q_science" class="section">
     <nav><button onclick="showSection('questions')">⬅ Back to Subjects</button></nav>
     <h2>Science Questions</h2>
@@ -172,7 +184,7 @@
     </div>
 </div>
 
-<!-- Other subjects coming soon -->
+<!-- Placeholder Subjects -->
 <div id="science" class="section"><nav><button onclick="showSection('preparation')">⬅ Back</button></nav><h2>Science</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
 <div id="hindi" class="section"><nav><button onclick="showSection('preparation')">⬅ Back</button></nav><h2>Hindi</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
 <div id="english" class="section"><nav><button onclick="showSection('preparation')">⬅ Back</button></nav><h2>English</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
@@ -189,7 +201,7 @@
 <div id="q_gk" class="section"><nav><button onclick="showSection('questions')">⬅ Back</button></nav><h2>GK Questions</h2><div class="cards"><div class="card">Coming Soon</div></div></div>
 
 <script>
-let updateId = 'v2'; // force new update dots
+let updateId = 'v2';
 function showSection(id) {
     document.querySelectorAll('.section, nav#mainMenu').forEach(el => el.style.display = 'none');
     if (id === 'mainMenu') document.getElementById('mainMenu').style.display = 'flex';
@@ -203,7 +215,7 @@ function acknowledge(key, link) {
     window.open(link);
 }
 function checkUpdates() {
-    ['ex2_2', 'ex1_2'].forEach(key => {
+    ['ex2_2', 'ex1_2', 'ex3_1', 'ex3_2', 'ex3_3'].forEach(key => {
         let userSeenKey = updateId + '_' + key;
         document.getElementById('dot_' + key).style.display = localStorage.getItem(userSeenKey) ? 'none' : 'inline-block';
     });
